@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jay Bhalodiya | UI/UX Web Designer</title>
   <meta name="description"
@@ -16,552 +17,7 @@
     rel="stylesheet">
 
   <!-- Styles -->
-  <style>
-    :root {
-      --bg-primary: #050505;
-      --bg-secondary: #0c0c0c;
-      --bg-accent: rgba(255, 255, 255, 0.03);
-
-      --accent-primary: #6366f1;
-      --accent-secondary: #a855f7;
-      --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-
-      --text-primary: #ffffff;
-      --text-secondary: #a1a1aa;
-      --text-muted: #71717a;
-
-      --column-gap: 24px;
-      --container-width: 1200px;
-
-      --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-      --glass-effect: blur(12px) saturate(180%) contrast(80%);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    body {
-      background-color: var(--bg-primary);
-      color: var(--text-primary);
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
-      line-height: 1.6;
-      cursor: none;
-      /* Hide default cursor for custom one */
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    .display-font {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.1; /* Improved line height for headings */
-    }
-
-    h2 {
-      background: var(--accent-gradient);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 1.2;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    .container {
-      max-width: var(--container-width);
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* Custom Cursor */
-    .cursor {
-      width: 10px;
-      height: 10px;
-      background: #fff;
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 10000;
-      mix-blend-mode: difference;
-    }
-
-    .cursor-follower {
-      width: 40px;
-      height: 40px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transition: transform 0.1s ease-out;
-    }
-
-    /* Sections */
-    section {
-      padding: 120px 0;
-      position: relative;
-    }
-
-    /* Navigation */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 32px 0;
-      z-index: 1000;
-      transition: var(--transition-smooth);
-    }
-
-    nav.scrolled {
-      background: rgba(5, 5, 5, 0.8);
-      backdrop-filter: var(--glass-effect);
-      padding: 16px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .nav-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 800;
-      background: var(--accent-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 40px;
-      background: rgba(255, 255, 255, 0.03);
-      padding: 12px 32px;
-      border-radius: 100px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-    }
-
-    .nav-link {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      transition: var(--transition-smooth);
-    }
-
-    .nav-link:hover {
-      color: var(--text-primary);
-    }
-
-    /* Hero Section */
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      opacity: 0.8;
-    }
-
-    .hero-bg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, transparent 0%, var(--bg-primary) 80%);
-    }
-
-    .hero-content {
-      text-align: center;
-      position: relative;
-      z-index: 10;
-    }
-
-    .hero-subtitle {
-      font-size: 1.25rem;
-      color: var(--accent-secondary);
-      margin-bottom: 24px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-    }
-
-    .hero-title {
-      font-size: clamp(3rem, 12vw, 10rem);
-      line-height: 0.85;
-      margin-bottom: 32px;
-      background: linear-gradient(to bottom, #fff 40%, #aaa 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-tagline {
-      font-size: 1.25rem;
-      color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto 48px;
-      font-weight: 400;
-    }
-
-    .hero-ctas {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-    }
-
-    .btn {
-      padding: 20px 40px;
-      border-radius: 100px;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: var(--transition-smooth);
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: #fff;
-      color: #000;
-    }
-
-    .btn-primary:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.05);
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: scale(1.05);
-    }
-
-    /* About Section */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
-      align-items: center;
-    }
-
-    .about-text h2 {
-      font-size: 4rem;
-      margin-bottom: 32px;
-    }
-
-    .about-text p {
-      font-size: 1.2rem;
-      color: var(--text-secondary);
-      margin-bottom: 32px;
-    }
-
-    .about-highlight {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-
-    .highlight-item {
-      background: var(--bg-secondary);
-      padding: 32px;
-      border-radius: 32px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: var(--transition-smooth);
-    }
-
-    .highlight-item:hover {
-      border-color: var(--accent-primary);
-      background: var(--bg-accent);
-    }
-
-    .highlight-item h3 {
-      font-size: 2.5rem;
-      margin-bottom: 8px;
-      background: var(--accent-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    /* Projects Section */
-    .section-header {
-      text-align: center;
-      margin-bottom: 80px;
-    }
-
-    .section-header h2 {
-      font-size: 4.5rem;
-      margin-bottom: 16px;
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 48px;
-    }
-
-    .project-card {
-      border-radius: 48px;
-      overflow: hidden;
-      background: var(--bg-secondary);
-      position: relative;
-      cursor: pointer;
-    }
-
-    .project-img-container {
-      aspect-ratio: 4/3;
-      overflow: hidden;
-    }
-
-    .project-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .project-card:hover .project-img {
-      transform: scale(1.05);
-    }
-
-    .project-info {
-      padding: 40px;
-      background: var(--bg-secondary);
-    }
-
-    .project-info h3 {
-      font-size: 2rem;
-      margin-bottom: 12px;
-    }
-
-    .project-info p {
-      color: var(--text-secondary);
-      margin-bottom: 24px;
-    }
-
-    .project-tags {
-      display: flex;
-      gap: 12px;
-    }
-
-    .project-tag {
-      padding: 8px 20px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 100px;
-      font-size: 0.85rem;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    /* Experience */
-    .experience-item {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 60px;
-      padding: 60px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .experience-item:last-child {
-      border-bottom: none;
-    }
-
-    .exp-year {
-      color: var(--text-muted);
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-
-    .exp-title {
-      font-size: 2rem;
-      margin-bottom: 8px;
-    }
-
-    .exp-company {
-      color: var(--accent-primary);
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 24px;
-      display: block;
-    }
-
-    .exp-desc li {
-      margin-bottom: 12px;
-      color: var(--text-secondary);
-      font-size: 1.1rem;
-    }
-
-    /* Services */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 32px;
-    }
-
-    .service-card {
-      padding: 48px;
-      background: var(--bg-secondary);
-      border-radius: 40px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: var(--transition-smooth);
-    }
-
-    .service-card:hover {
-      transform: translateY(-10px);
-      background: var(--bg-accent);
-      border-color: var(--accent-primary);
-    }
-
-    .service-icon-box {
-      width: 80px;
-      height: 80px;
-      background: var(--accent-gradient);
-      border-radius: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 32px;
-      color: #fff;
-    }
-
-    /* Contact Form */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 100px;
-      align-items: start;
-    }
-
-    .contact-form {
-      background: var(--bg-secondary);
-      padding: 60px;
-      border-radius: 48px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .form-group {
-      margin-bottom: 32px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 12px;
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 20px;
-      border-radius: 16px;
-      color: #fff;
-      font-size: 1rem;
-      font-family: inherit;
-      transition: var(--transition-smooth);
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--accent-primary);
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    /* --- Responsive System --- */
-    @media (max-width: 1024px) {
-      :root {
-        --container-width: 90% !important;
-      }
-      .hero-title { font-size: clamp(4rem, 15vw, 8rem); }
-      .about-grid { gap: 60px; }
-      section { padding: 100px 0; }
-    }
-
-    @media (max-width: 768px) {
-      :root {
-        --container-width: 100%;
-      }
-      
-      section { padding: 70px 0; }
-      
-      .nav-links { display: none; } /* Hide for clean mobile look */
-      
-      .hero-title { font-size: clamp(3rem, 18vw, 5rem); margin-bottom: 24px; }
-      .hero-subtitle { font-size: 1rem; margin-bottom: 16px; }
-      .hero-tagline { font-size: 1rem; margin-bottom: 32px; }
-      
-      .btn { padding: 16px 32px; width: 100%; justify-content: center; }
-      .hero-ctas { flex-direction: column; width: 100%; max-width: 320px; margin: 0 auto; }
-      
-      h2 { font-size: 2.5rem !important; }
-      .section-header h2 { font-size: 2.5rem !important; }
-      .about-text h2 { font-size: 2.5rem !important; }
-
-      .about-grid, .projects-grid, .contact-grid, .services-grid {
-        grid-template-columns: 1fr !important;
-        gap: 32px;
-      }
-
-      .about-highlight { grid-template-columns: 1fr; }
-      
-      .experience-item {
-        grid-template-columns: 1fr;
-        gap: 12px;
-        padding: 40px 0;
-      }
-
-      .contact-info h2 { font-size: 3.5rem !important; }
-      
-      .contact-card { padding: 24px; }
-      .contact-card a, .contact-card p:not(:first-child) { font-size: 1.2rem !important; }
-
-      body { cursor: auto; }
-      .cursor, .cursor-follower { display: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
@@ -577,8 +33,23 @@
         <li><a href="#experience" class="nav-link">Experience</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
+      <button class="menu-btn" id="menuOpen">
+        <i data-lucide="menu"></i>
+      </button>
     </div>
   </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="menuClose">
+      <i data-lucide="x"></i>
+    </button>
+    <ul class="mobile-nav-links">
+      <li><a href="#about" class="mobile-nav-link">About</a></li>
+      <li><a href="#projects" class="mobile-nav-link">Works</a></li>
+      <li><a href="#experience" class="mobile-nav-link">Experience</a></li>
+      <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+    </ul>
+  </div>
 
   <main>
     <!-- Hero -->
@@ -608,7 +79,7 @@
               digital products that balance aesthetic beauty with functional excellence.</p>
             <p>From strategic wireframing to high-fidelity design systems, I work across React, WordPress, and Shopify
               environments to deliver premium web experiences.</p>
-            <a href="#contact" class="btn btn-secondary" style="margin-top: 20px;">Download CV</a>
+            <a href="#contact" class="btn btn-secondary about-download">Download CV</a>
           </div>
           <div class="about-highlight">
             <div class="highlight-item">
@@ -641,55 +112,73 @@
         </div>
         <div class="projects-grid">
           <div class="project-card">
-            <div class="project-img-container">
-              <img src="/projects.png" alt="Lumiere" class="project-img" style="object-position: 0 0;">
-            </div>
             <div class="project-info">
-              <h3>Lumiére Luxe</h3>
-              <p>E-commerce experience for a premium fragrance brand.</p>
+              <h3>Communipass</h3>
+              <div class="project-tags">
+                <span class="project-tag">Wordpress</span>
+                <span class="project-tag">Elementor Page Builder</span>
+              </div>
+              <a href="https://communipass.com" target="_blank" class="project-link">communipass.com <i data-lucide="external-link"></i></a>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-info">
+              <h3>Epicpalette</h3>
+              <div class="project-tags">
+                <span class="project-tag">Wordpress</span>
+                <span class="project-tag">Elementor Page Builder</span>
+              </div>
+              <a href="https://epicpalette.com/" target="_blank" class="project-link">epicpalette.com <i data-lucide="external-link"></i></a>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-info">
+              <h3>Businora</h3>
+              <div class="project-tags">
+                <span class="project-tag">Wordpress</span>
+                <span class="project-tag">Elementor Page Builder</span>
+              </div>
+              <a href="https://Businora.com/" target="_blank" class="project-link">Businora.com <i data-lucide="external-link"></i></a>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-info">
+              <h3>Nurtureand/</h3>
               <div class="project-tags">
                 <span class="project-tag">Shopify</span>
-                <span class="project-tag">Luxury</span>
+                <span class="project-tag">Liquid</span>
               </div>
+              <a href="https://nurtureand.com/" target="_blank" class="project-link">nurtureand.com <i data-lucide="external-link"></i></a>
             </div>
           </div>
           <div class="project-card">
-            <div class="project-img-container">
-              <img src="/projects.png" alt="Apex" class="project-img" style="object-position: 33% 0;">
-            </div>
             <div class="project-info">
-              <h3>Apex Analytics</h3>
-              <p>A sophisticated fintech dashboard for data visualization.</p>
+              <h3>Drinksupercoffee</h3>
               <div class="project-tags">
-                <span class="project-tag">Dashboard</span>
-                <span class="project-tag">React</span>
+                <span class="project-tag">Shopify</span>
+                <span class="project-tag">Liquid</span>
               </div>
+              <a href="https://www.drinksupercoffee.com/" target="_blank" class="project-link">drinksupercoffee.com <i data-lucide="external-link"></i></a>
             </div>
           </div>
           <div class="project-card">
-            <div class="project-img-container">
-              <img src="/projects.png" alt="Studio X" class="project-img" style="object-position: 66% 0;">
-            </div>
             <div class="project-info">
-              <h3>Studio X</h3>
-              <p>Creative agency portfolio with custom interactions.</p>
+              <h3>Murfelectricbikes</h3>
               <div class="project-tags">
-                <span class="project-tag">Creativity</span>
-                <span class="project-tag">Next.js</span>
+                <span class="project-tag">Shopify</span>
+                <span class="project-tag">Liquid</span>
               </div>
+              <a href="https://murfelectricbikes.com/" target="_blank" class="project-link">murfelectricbikes.com <i data-lucide="external-link"></i></a>
             </div>
           </div>
           <div class="project-card">
-            <div class="project-img-container">
-              <img src="/projects.png" alt="Wander" class="project-img" style="object-position: 100% 0;">
-            </div>
             <div class="project-info">
-              <h3>Wander Travel</h3>
-              <p>A vibrant and intuitive travel booking platform.</p>
+              <h3>Freestyle</h3>
               <div class="project-tags">
-                <span class="project-tag">UX Research</span>
-                <span class="project-tag">Mobile</span>
+                <span class="project-tag">Shopify</span>
+                <span class="project-tag">Liquid</span>
               </div>
+              <a href="https://freestyle.world/" target="_blank" class="project-link">Freestyle.world <i data-lucide="external-link"></i></a>
             </div>
           </div>
         </div>
@@ -705,19 +194,25 @@
         </div>
         <div class="services-grid">
           <div class="service-card">
-            <div class="service-icon-box" id="icon-web"></div>
+            <div class="service-icon-box">
+              <i data-lucide="palette" size="32"></i>
+            </div>
             <h3>UI/UX Design</h3>
-            <p>Designing interfaces that are as intuitive as they are beautiful.</p>
+            <p>Designing interfaces that are as intuitive as they are beautiful, focusing on user behavior and aesthetic excellence.</p>
           </div>
           <div class="service-card">
-            <div class="service-icon-box" id="icon-wp"></div>
+            <div class="service-icon-box">
+              <i data-lucide="layout-template" size="32"></i>
+            </div>
             <h3>WordPress</h3>
-            <p>Scalable and high-performing CMS solutions with Elementor.</p>
+            <p>Scalable and high-performing CMS solutions with Elementor, tailored for business growth and ease of management.</p>
           </div>
           <div class="service-card">
-            <div class="service-icon-box" id="icon-shop"></div>
+            <div class="service-icon-box">
+              <i data-lucide="shopping-cart" size="32"></i>
+            </div>
             <h3>Shopify Store</h3>
-            <p>Crafting conversion-optimized e-commerce experiences.</p>
+            <p>Crafting conversion-optimized e-commerce experiences that turn visitors into loyal customers through seamless design.</p>
           </div>
         </div>
       </div>
@@ -734,7 +229,7 @@
           <div class="experience-item">
             <div class="exp-year">2023 - Present</div>
             <div class="exp-content">
-              <h3 class="exp-title">Web Designer</h3>
+              <h3 class="exp-title">Sr. Web Designer</h3>
               <span class="exp-company">Shiv Technolabs Pvt. Ltd.</span>
               <ul class="exp-desc">
                 <li>Leading theme customization and UI-focused design for high-scale WordPress and Shopify stores.</li>
@@ -753,6 +248,17 @@
               </ul>
             </div>
           </div>
+          <div class="experience-item">
+            <div class="exp-year">2021 - 2022</div>
+            <div class="exp-content">
+              <h3 class="exp-title">Web Designer (Internship)</h3>
+              <span class="exp-company">Chitrakoot Web</span>
+              <ul class="exp-desc">
+                <li>Assisted in design and development</li>
+                <li>Learned industry standards</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -762,23 +268,21 @@
       <div class="container">
         <div class="contact-grid">
           <div class="contact-info">
-            <h2 style="font-size: 5rem; line-height: 0.9; margin-bottom: 32px;">Let's build<br><span
-                style="color: var(--accent-primary);">excellence</span>.</h2>
-            <p style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 48px;">Reach out for
-              collaborations or just to say hi.</p>
+            <h2 class="contact-heading">Let’s Work<br><span>Together</span>.</h2>
+            <p class="contact-intro">Reach out for collaborations or just to say hi.</p>
           </div>
-          <div class="contact-methods" style="display: flex; flex-direction: column; gap: 32px; justify-content: center;">
-            <div class="contact-card" style="background: var(--bg-secondary); padding: 40px; border-radius: 32px; border: 1px solid rgba(255, 255, 255, 0.05); transition: var(--transition-smooth);">
-              <p style="color: var(--text-muted); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.2em; margin-bottom: 12px;">Email me</p>
-              <a href="mailto:jaybhalodiya@gmail.com" style="font-size: 1.8rem; font-weight: 700; color: #fff;">jaybhalodiya@gmail.com</a>
+          <div class="contact-methods">
+            <div class="contact-card">
+              <p class="contact-card-label">Email me</p>
+              <a href="mailto:jaybhalodiya@gmail.com" class="contact-card-value">jaybbhalodiya@gmail.com</a>
             </div>
-            <div class="contact-card" style="background: var(--bg-secondary); padding: 40px; border-radius: 32px; border: 1px solid rgba(255, 255, 255, 0.05); transition: var(--transition-smooth);">
-              <p style="color: var(--text-muted); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.2em; margin-bottom: 12px;">Call me</p>
-              <a href="tel:+919106021639" style="font-size: 1.8rem; font-weight: 700; color: #fff;">+91 91060 21639</a>
+            <div class="contact-card">
+              <p class="contact-card-label">Call me</p>
+              <a href="tel:+919106021639" class="contact-card-value">+91 90818 35684</a>
             </div>
-            <div class="contact-card" style="background: var(--bg-secondary); padding: 40px; border-radius: 32px; border: 1px solid rgba(255, 255, 255, 0.05); transition: var(--transition-smooth);">
-              <p style="color: var(--text-muted); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.2em; margin-bottom: 12px;">Location</p>
-              <p style="font-size: 1.8rem; font-weight: 700; color: #fff;">Ahmedabad, India</p>
+            <div class="contact-card">
+              <p class="contact-card-label">Location</p>
+              <p class="contact-card-value">Ahmedabad, India</p>
             </div>
           </div>
         </div>
@@ -786,9 +290,9 @@
     </section>
   </main>
 
-  <footer style="padding: 100px 0 50px; border-top: 1px solid rgba(255, 255, 255, 0.05); text-align: center;">
+  <footer class="site-footer">
     <div class="container">
-      <p style="color: var(--text-muted);">&copy; 2024 Jay Bhalodiya. Crafted with passion & pixel-perfection.</p>
+      <p>&copy; 2026 Jay Bhalodiya. Crafted with passion & pixel-perfection.</p>
     </div>
   </footer>
 
@@ -797,83 +301,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-
-  <script>
-    // Initialize Lucide
-    lucide.createIcons();
-
-    // Custom Cursor
-    const cursor = document.querySelector('.cursor');
-    const follower = document.querySelector('.cursor-follower');
-
-    window.addEventListener('mousemove', (e) => {
-      gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0, ease: 'none' });
-      gsap.to(follower, { x: e.clientX - 15, y: e.clientY - 15, duration: 0.15 });
-    });
-
-    const links = document.querySelectorAll('a, button, .project-card');
-    links.forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        gsap.to(follower, { scale: 2, background: 'rgba(255,255,255,0.1)', border: 'none' });
-      });
-      link.addEventListener('mouseleave', () => {
-        gsap.to(follower, { scale: 1, background: 'none', border: '1px solid rgba(255,255,255,0.3)' });
-      });
-    });
-
-    // Smooth Scroll
-    const lenis = new Lenis();
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    // Nav Scroll
-    window.addEventListener('scroll', () => {
-      const nav = document.querySelector('nav');
-      if (window.scrollY > 50) nav.classList.add('scrolled');
-      else nav.classList.remove('scrolled');
-    });
-
-    // Animations
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Hero Reveal
-    const tl = gsap.timeline();
-    tl.from('.hero-subtitle', { y: 20, opacity: 0, duration: 1 })
-      .from('.hero-title', { y: 40, opacity: 0, duration: 1.2, ease: 'power4.out' }, '-=0.8')
-      .from('.hero-tagline', { y: 20, opacity: 0, duration: 1 }, '-=0.8')
-      .from('.hero-ctas', { y: 20, opacity: 0, duration: 1 }, '-=0.8');
-
-    // Section Reveals
-    const reveals = document.querySelectorAll('section:not(.hero)');
-    reveals.forEach(sec => {
-      gsap.from(sec.querySelector('.container'), {
-        scrollTrigger: {
-          trigger: sec,
-          start: 'top 80%',
-        },
-        y: 60,
-        opacity: 0,
-        duration: 1.2,
-        ease: 'power3.out'
-      });
-    });
-
-    // Project Cards
-    gsap.from('.project-card', {
-      scrollTrigger: {
-        trigger: '.projects-grid',
-        start: 'top 80%',
-      },
-      y: 60,
-      opacity: 0,
-      stagger: 0.2,
-      duration: 1,
-      ease: 'power3.out'
-    });
-  </script>
+  <script src="./script.js"></script>
 </body>
 
 </html>
